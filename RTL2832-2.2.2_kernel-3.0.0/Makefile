@@ -36,7 +36,7 @@ EXTRA_CFLAGS += -I$(KBUILD_SRC)/drivers/media/dvb/dvb-usb/ \
 		-D__DVB_CORE__
 
 KINS = /lib/modules
-KDIR = /usr/src/linux-headers-`uname -r`
+KDIR = /usr/src/kernels/`uname -r`
 
 default:
 	make -C $(KDIR) SUBDIRS=$(PWD) modules
