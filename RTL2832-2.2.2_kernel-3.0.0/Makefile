@@ -14,6 +14,7 @@ INCLUDE_EXTRA_DVB := include-340
 # current dir
 SOURCEDIR := $(PWD)
 KERNVER=`uname -r`
+DISTRO:=$(shell test -f /etc/redhat-release && echo 'redhat' || echo 'other')
 
 dvb-usb-rtl2832u-objs := demod_rtl2832.o dvbt_demod_base.o dvbt_nim_base.o \
 	foundation.o math_mpi.o nim_rtl2832_mxl5007t.o nim_rtl2832_fc2580.o \
@@ -37,7 +38,11 @@ EXTRA_CFLAGS += -I$(KBUILD_SRC)/drivers/media/dvb/dvb-usb/ \
 		-D__DVB_CORE__
 
 KINS = /lib/modules
+ifeq ($(DISTRO),redhat)
 KDIR = /usr/src/kernels/$(KERNVER)
+else
+KDIR = /usr/src/linux-headers-$(KERNVER)
+endif
 
 default:
 	make -C $(KDIR) SUBDIRS=$(PWD) modules
