@@ -855,7 +855,9 @@ static struct dvb_usb_device_properties rtl2832u_1st_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -864,7 +866,9 @@ static struct dvb_usb_device_properties rtl2832u_1st_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -953,7 +957,9 @@ static struct dvb_usb_device_properties rtl2832u_2nd_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -962,7 +968,9 @@ static struct dvb_usb_device_properties rtl2832u_2nd_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1053,7 +1061,9 @@ static struct dvb_usb_device_properties rtl2832u_3th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1062,7 +1072,9 @@ static struct dvb_usb_device_properties rtl2832u_3th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1156,7 +1168,9 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1165,7 +1179,9 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1263,7 +1279,9 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1272,7 +1290,9 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1370,7 +1390,9 @@ static struct dvb_usb_device_properties rtl2832u_6th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1379,7 +1401,9 @@ static struct dvb_usb_device_properties rtl2832u_6th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1476,7 +1500,9 @@ static struct dvb_usb_device_properties rtl2832u_7th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1485,7 +1511,9 @@ static struct dvb_usb_device_properties rtl2832u_7th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1577,7 +1605,9 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1586,7 +1616,9 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1678,7 +1710,9 @@ static struct dvb_usb_device_properties rtl2832u_9th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1687,7 +1721,9 @@ static struct dvb_usb_device_properties rtl2832u_9th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
