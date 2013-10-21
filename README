@@ -57,3 +57,18 @@ Note: Module dvb_usb_rtl2832u has many options (use modinfo dvb_usb_rtl2832u to 
 modprobe dvb_usb_rtl2832u debug=1
 - if you want enable remote_command (default disabled) use:
 modprobe dvb_usb_rtl2832u rc_mode=2  (or =0 or =1)
+
+
+**** DMKS INSTALL ****
+
+1) extract to /usr/src
+
+2) setup dkms, build and install
+
+cd /usr/src/DVB-RTL/RTL2832-*
+ln -s "$PWD" /usr/src/dvb-rtl2832u-2.2.2
+(eventually :dkms remove -m dvb-rtl2832u -v 2.x.x --all)
+dkms add -m dvb-rtl2832u -v 2.2.2
+dkms build -m dvb-rtl2832u -v 2.2.2
+dkms install -m dvb-rtl2832u -v 2.2.2
+modprobe dvb-usb-rtl2832u
