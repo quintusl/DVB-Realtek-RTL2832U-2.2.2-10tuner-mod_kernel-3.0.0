@@ -841,6 +841,7 @@ static struct usb_device_id rtl2832u_usb_table [] = {
 													
 	{ USB_DEVICE(USB_VID_TERRATEC, USB_PID_TERRATEC_00D3)},	// 76 cinergy tstick rc rev.3
 	{ USB_DEVICE(USB_VID_LEADTEK, USB_PID_LEADTEK_WARM_3)},	// 77 winfast dtv dongle mini
+	{ USB_DEVICE(USB_VID_KWORLD_1ST, USB_PID_KWORLD_C880)}, // 78 afatech in Asus ET2311i
 
 	{ 0 },
 };
@@ -1336,7 +1337,7 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 		.rc_interval  = RT_RC_POLLING_INTERVAL_TIME_MS,		
 	},
 	
-	.num_device_descs = 9,
+	.num_device_descs = 10,
 	.devices = {
 		{ .name = "RTL2832U DVB-T USB DEVICE",
 		  .cold_ids = { NULL, NULL },
@@ -1384,6 +1385,11 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 		  .warm_ids = { &rtl2832u_usb_table[44], NULL },
 		},				
 		
+		{
+		  .name = "USB DVB-T DEVICE (Afatech)",
+		  .cold_ids = { NULL, NULL },
+		  .warm_ids = { &rtl2832u_usb_table[78], NULL },
+		},
 		
 	}
 };
