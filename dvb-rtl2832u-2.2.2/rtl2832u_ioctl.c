@@ -1,5 +1,9 @@
 #include "rtl2832u_ioctl.h"
+/* .fe_ioctl_override is not anymore in dvb_usb_device_properties after
+ * kernel 3.6.0. It seems it is still working without it. :-) */
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
 int rtl2832u_ioctl_override(struct dvb_frontend *fe,unsigned int cmd, void *parg,unsigned int stage);
+#endif
 int 
 set_rtl2832_ioctrl_8bit_stdi2c(
 	struct dvb_frontend 		*fe,
@@ -269,6 +273,7 @@ static int fe_demod_info_ioctrl(struct dvb_frontend *fe, void *parg)
 	 return ret;
 	
 }
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,9,0)
 int rtl2832u_ioctl_override(struct dvb_frontend *fe,unsigned int cmd, void *parg,unsigned int stage)
 {
 	int ret = 0;
@@ -302,6 +307,7 @@ int rtl2832u_ioctl_override(struct dvb_frontend *fe,unsigned int cmd, void *parg
 	 return ret;
 
 }
+#endif
 
 int 
 set_rtl2832_ioctrl_8bit_stdi2c(

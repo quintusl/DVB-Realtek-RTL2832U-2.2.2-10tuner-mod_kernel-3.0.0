@@ -821,7 +821,6 @@ static struct usb_device_id rtl2832u_usb_table [] = {
 
 	{ USB_DEVICE(USB_VID_LEADTEK, USB_PID_LEADTEK_WARM_1)},		// 60			
 	{ USB_DEVICE(USB_VID_LEADTEK, USB_PID_LEADTEK_WARM_2)},		// 61
-	{ USB_DEVICE(USB_VID_LEADTEK, USB_PID_LEADTEK_WARM_3)},		
 
 	{ USB_DEVICE(USB_VID_YUAN, USB_PID_YUAN_WARM)},			//62
         { USB_DEVICE(USB_VID_YUAN, USB_PID_YUAN_WARM80)},		//63
@@ -840,6 +839,11 @@ static struct usb_device_id rtl2832u_usb_table [] = {
 	
 	{ USB_DEVICE(USB_VID_GOLDENBRIDGE, USB_PID_GOLDENBRIDGE_WARM)},	//75	
 													
+	{ USB_DEVICE(USB_VID_TERRATEC, USB_PID_TERRATEC_00D3)},	// 76 cinergy tstick rc rev.3
+	{ USB_DEVICE(USB_VID_LEADTEK, USB_PID_LEADTEK_WARM_3)},	// 77 winfast dtv dongle mini
+	{ USB_DEVICE(USB_VID_KWORLD_1ST, USB_PID_KWORLD_C880)}, // 78 afatech in Asus ET2311i
+	{ USB_DEVICE(USB_VID_KWORLD_1ST, USB_PID_KWORLD_D39F)}, // 79 afatech in Magic-Pro ProHDTV Mini 2
+
 	{ 0 },
 };
 
@@ -854,7 +858,9 @@ static struct dvb_usb_device_properties rtl2832u_1st_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -863,7 +869,9 @@ static struct dvb_usb_device_properties rtl2832u_1st_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -952,7 +960,9 @@ static struct dvb_usb_device_properties rtl2832u_2nd_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -961,7 +971,9 @@ static struct dvb_usb_device_properties rtl2832u_2nd_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1052,7 +1064,9 @@ static struct dvb_usb_device_properties rtl2832u_3th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1061,7 +1075,9 @@ static struct dvb_usb_device_properties rtl2832u_3th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1155,7 +1171,9 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1164,7 +1182,9 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1202,7 +1222,7 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
 		.rc_interval  = RT_RC_POLLING_INTERVAL_TIME_MS,		
 	},
 	
-	.num_device_descs = 9,
+	.num_device_descs = 10,
 	.devices = {
 		{ .name = "DK DONGLE",
 		  .cold_ids = { NULL, NULL },
@@ -1249,6 +1269,11 @@ static struct dvb_usb_device_properties rtl2832u_4th_properties = {
 		  .cold_ids = { NULL, NULL },
 		  .warm_ids = { &rtl2832u_usb_table[35], NULL },
 		},				
+		{
+		  .name = "Terratec Cinergy T Stick RC rev. 3",
+		  .cold_ids = { NULL, NULL },
+		  .warm_ids = { &rtl2832u_usb_table[76], NULL },
+		},
 		
 		
 	}
@@ -1262,7 +1287,9 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1271,7 +1298,9 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1309,7 +1338,7 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 		.rc_interval  = RT_RC_POLLING_INTERVAL_TIME_MS,		
 	},
 	
-	.num_device_descs = 9,
+	.num_device_descs = 11,
 	.devices = {
 		{ .name = "RTL2832U DVB-T USB DEVICE",
 		  .cold_ids = { NULL, NULL },
@@ -1357,6 +1386,17 @@ static struct dvb_usb_device_properties rtl2832u_5th_properties = {
 		  .warm_ids = { &rtl2832u_usb_table[44], NULL },
 		},				
 		
+		{
+		  .name = "USB DVB-T DEVICE (Afatech)",
+		  .cold_ids = { NULL, NULL },
+		  .warm_ids = { &rtl2832u_usb_table[78], NULL },
+		},
+
+		{
+		  .name = "USB DTMB DEVICE (Afatech)",
+		  .cold_ids = { NULL, NULL },
+		  .warm_ids = { &rtl2832u_usb_table[79], NULL },
+		},
 		
 	}
 };
@@ -1369,7 +1409,9 @@ static struct dvb_usb_device_properties rtl2832u_6th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1378,7 +1420,9 @@ static struct dvb_usb_device_properties rtl2832u_6th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1475,7 +1519,9 @@ static struct dvb_usb_device_properties rtl2832u_7th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1484,7 +1530,9 @@ static struct dvb_usb_device_properties rtl2832u_7th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1576,7 +1624,9 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1585,7 +1635,9 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 
@@ -1623,7 +1675,7 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
 		.rc_interval  = RT_RC_POLLING_INTERVAL_TIME_MS,		
 	},
 	
-	.num_device_descs = 9,
+	.num_device_descs = 10,
 	.devices = {
 		{ .name = "USB DVB-T Device",
 		  .cold_ids = { NULL, NULL },
@@ -1664,6 +1716,11 @@ static struct dvb_usb_device_properties rtl2832u_8th_properties = {
 		  .cold_ids = { NULL, NULL },
 		  .warm_ids = { &rtl2832u_usb_table[71], NULL },
 		},
+		{
+		  .name ="WinFast DTV Dongle Mini",
+		  .cold_ids = { NULL, NULL },
+		  .warm_ids = { &rtl2832u_usb_table[77], NULL },
+		},
 
 		{ NULL },				
 	}
@@ -1677,7 +1734,9 @@ static struct dvb_usb_device_properties rtl2832u_9th_properties = {
 			{
 
 #ifdef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
                        .num_frontends = 1,
                        .fe = {{
 #endif
@@ -1686,7 +1745,9 @@ static struct dvb_usb_device_properties rtl2832u_9th_properties = {
                        .frontend_attach = rtl2832u_frontend_attach,
 
 #ifndef V4L2_REFACTORED_MFE_CODE
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3,6,0)
                        .fe_ioctl_override = rtl2832u_ioctl_override,
+#endif
 #endif
 
 			//parameter for the MPEG2-data transfer 

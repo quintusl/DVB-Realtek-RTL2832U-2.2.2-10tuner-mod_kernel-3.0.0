@@ -1,4 +1,4 @@
-2011-11-07
+2013-10-01
 
 Original Realtek RTL2832U chipset (DVB/DAB) Linux 2.6.x driver rel. 2.2.2 , "full" version
 
@@ -36,48 +36,20 @@ Some DVB-T stick equipped with rtl2832:
   DIGIVOX mini II v3.0 (ID 1d19:1101)
 
 
-**** UBUNTU FRESH INSTALL ****
+**** CLASSIC INSTALL ****
 
-- install compile kit
-sudo apt-get install build-essential
+1) clone this repo using git clone and go into source dir
 
-- install linux headers
-sudo apt-get install linux-headers-$(uname -r)
+2) build and install
 
-- install git
-sudo apt-get install git
-
-- clone this repo using git
-git clone https://github.com/ambrosa/DVB-Realtek-RTL2832U-2.2.2-10tuner-mod_kernel-3.0.0.git 
-
-- goto into source dir
-cd DVB-Realtek-RTL2832U-2.2.2-10tuner-mod_kernel-3.0.0
-cd RTL2832-2.2.2_kernel-3.0.0
-
-- edit Makefile, option INCLUDE_EXTRA_DVB (choose which include file set)
-
-- compile code
+apt-get install build-essential linux-headers-$(uname -r) git
+cd RTL2832-*
 make clean
 make
-
-- install module
-sudo make install
-
-- insert module (or reboot)
+make install
 modprobe dvb_usb_rtl2832u
 
-If all is fine you can see in kernel log something like this:
-  [18087.037024] dvb-usb: found a 'USB DVB-T DEVICE' in warm state.
-  [18087.037031] dvb-usb: will pass the complete MPEG2 transport stream to the software demuxer.
-  [18087.038776] DVB: registering new adapter (USB DVB-T DEVICE)
-  [18087.055952] RTL2832U usb_init_bulk_setting : USB2.0 HIGH SPEED (480Mb/s)
-  [18087.287475] RTL2832U check_tuner_type : FC0012 tuner on board...
-  [18087.853235] DVB: registering adapter 0 frontend 0 (Realtek DVB-T RTL2832)...
-  [18087.853384] input: IR-receiver inside an USB DVB receiver as /devices/pci0000:00/0000:00:1d.7/usb1/1-7/input/input15
-  [18087.853419] dvb-usb: schedule remote query interval to 287 msecs.
-  [18087.853423] dvb-usb: USB DVB-T DEVICE successfully initialized and connected.
-  [18087.853447] usbcore: registered new interface driver dvb_usb_rtl2832u
-
+3) insert dvb stick and check logs with dmesg
 
 Note: Module dvb_usb_rtl2832u has many options (use modinfo dvb_usb_rtl2832u to see them)
 
@@ -87,19 +59,16 @@ modprobe dvb_usb_rtl2832u debug=1
 modprobe dvb_usb_rtl2832u rc_mode=2  (or =0 or =1)
 
 
-**** UPDATING LOCAL GIT REPO WITH NEW CHANGES ****
+**** DMKS INSTALL ****
 
-- go into local git repo 
-cd DVB-Realtek-RTL2832U-2.2.2-10tuner-mod_kernel-3.0.0
+1) extract to /usr/src
 
-- update local files with new changes
-git pull
+2) setup dkms, build and install
 
-- compile 
-cd RTL2832-2.2.2_kernel-3.0.0
-make clean
-make
-
-- install module
-sudo make install
-
+cd /usr/src/DVB-RTL/RTL2832-*
+ln -s "$PWD" /usr/src/dvb-rtl2832u-2.2.2
+(eventually :dkms remove -m dvb-rtl2832u -v 2.x.x --all)
+dkms add -m dvb-rtl2832u -v 2.2.2
+dkms build -m dvb-rtl2832u -v 2.2.2
+dkms install -m dvb-rtl2832u -v 2.2.2
+modprobe dvb-usb-rtl2832u
